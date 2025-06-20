@@ -1,0 +1,744 @@
+:root {
+    --primary-color: #005A9C; /* Azul escuro */
+    --secondary-color: #00A9E0; /* Azul claro */
+    --text-color-light: #f8f9fa;
+    --text-color-dark: #343a40;
+    --background-color: #ffffff;
+    --header-bg: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+    --border-color: #dee2e6;
+    --light-blue-bg: #e6f4fb; /* Used for icons and light backgrounds */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.site-header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-slogan {
+    flex-shrink: 0;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.site-slogan {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 300;
+}
+
+.main-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 1.5rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 400;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.main-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    min-height: calc(80vh - 4rem); /* Viewport height minus padding */
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-dark);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.hero-image-placeholder {
+    flex-basis: 40%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    background-color: var(--secondary-color);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 90, 156, 0.2);
+}
+
+.content-section {
+    max-width: 800px;
+    margin: 0 auto; /* Centraliza a seção */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--text-color-dark);
+    line-height: 1.8;
+}
+
+main section {
+    padding-top: 6rem; /* Adjust for sticky header and add some space */
+    padding-bottom: 4rem; /* Increased bottom padding for better spacing */
+    border-bottom: 1px solid #eee;
+}
+
+main section:first-of-type, main section:last-of-type {
+    border-bottom: none;
+}
+
+main section:first-of-type {
+    min-height: auto; /* Allow hero to define its own height */
+    padding-top: 0;
+    padding-bottom: 0;
+    justify-content: flex-start;
+}
+
+/* Componentes Principais - Cards */
+.componentes-cards-wrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.componente-card {
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0,90,156,0.07), 0 1.5px 5px rgba(0,0,0,0.04);
+    border-radius: 18px;
+    padding: 2.2rem 2rem 2rem 2rem;
+    flex: 1 1 340px;
+    max-width: 400px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    transition: transform 0.18s cubic-bezier(.24,.6,.44,1.34), box-shadow 0.19s;
+}
+
+.componente-card:hover {
+    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 8px 30px rgba(0,90,156,0.13), 0 2px 7px rgba(0,0,0,0.08);
+}
+
+.componente-icon {
+    margin-bottom: 1.3rem;
+    background: var(--light-blue-bg);
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.componente-icon svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+
+.componente-title {
+    color: var(--primary-color);
+    font-size: 1.22rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.componente-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-color-dark);
+    font-size: 1.07rem;
+    line-height: 1.6;
+}
+
+.componente-list li {
+    margin-bottom: 0.7rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.componente-list li::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0.64em;
+    transform: translateY(-45%);
+}
+
+/* Como Funciona - Etapas */
+.como-funciona-steps {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.funciona-etapa-card {
+    background: #fff;
+    box-shadow: 0 4px 18px rgba(0,90,156,0.08), 0 1.5px 5px rgba(0,0,0,0.03);
+    border-radius: 16px;
+    padding: 2rem 1.3rem 1.6rem 1.3rem;
+    flex: 1 1 230px;
+    min-width: 220px;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.18s cubic-bezier(.24,.6,.44,1.34), box-shadow 0.19s;
+    position: relative;
+}
+
+.funciona-etapa-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 30px rgba(0,90,156,0.13), 0 2px 7px rgba(0,0,0,0.08);
+}
+
+.funciona-icone {
+    background: var(--light-blue-bg);
+    border-radius: 50%;
+    width: 62px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+}
+
+.funciona-icone svg {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.funciona-etapa-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.7rem;
+    margin-top: 0;
+}
+
+.funciona-etapa-desc {
+    color: var(--text-color-dark);
+    font-size: 1.01rem;
+    line-height: 1.55;
+    margin-bottom: 0;
+}
+
+/* Bot Details Overlay Styles */
+.bot-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.bot-details-content {
+    background: var(--background-color);
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    max-width: 800px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeInScale 0.3s ease-out;
+    box-sizing: border-box;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-color-dark);
+    line-height: 1;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: var(--light-blue-bg);
+    color: var(--primary-color);
+}
+
+.bot-details-title {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.bot-details-content h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.bot-details-content p {
+    font-size: 1.05rem;
+    color: var(--text-color-dark);
+    margin-bottom: 1rem;
+}
+
+.bot-details-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--text-color-dark);
+}
+
+.bot-details-content ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.bot-details-content ul li::before {
+    content: "•"; /* Bullet point */
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -0.1em;
+}
+
+/* Simulated Chat Box */
+.simulated-chat-heading {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.simulated-chat-box {
+    background-color: #f0f2f5;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    max-width: 450px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.chat-header {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.chat-input-area textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    resize: none;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    min-height: 80px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.chat-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.chat-buttons button {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-size: 0.95rem;
+}
+
+.audio-send-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+}
+
+.audio-send-button:hover {
+    background-color: #008cc0;
+    transform: translateY(-1px);
+}
+
+.text-send-button {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.text-send-button:hover {
+    background-color: #004a80;
+    transform: translateY(-1px);
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.faq-section h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.faq-item {
+    background-color: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-question {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.faq-answer {
+    color: var(--text-color-dark);
+    margin-bottom: 0;
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .componentes-cards-wrapper {
+        gap: 1.2rem;
+    }
+
+    .como-funciona-steps {
+        gap: 1rem;
+    }
+
+    .funciona-etapa-card {
+        max-width: 200px;
+        padding: 1.6rem 0.8rem 1.3rem 0.8rem;
+    }
+
+    .bot-details-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .bot-details-title {
+        font-size: 1.8rem;
+    }
+
+    .bot-details-content h3 {
+        font-size: 1.15rem;
+    }
+    .bot-details-content p, .bot-details-content ul li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-nav {
+        margin-top: 1rem;
+    }
+
+    .main-nav li {
+        margin: 0 0.5rem;
+    }
+    
+    .site-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-section {
+        padding: 2rem 0;
+        text-align: center;
+        min-height: auto;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        order: 2; /* Text appears after image */
+    }
+    
+    .hero-image-placeholder {
+        order: 1; /* Image appears before text */
+        width: 60%;
+        flex-basis: auto;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-text {
+        font-size: 1rem;
+    }
+
+    .componentes-cards-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .componente-card {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .como-funciona-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .funciona-etapa-card {
+        max-width: 340px;
+        width: 100%;
+    }
+
+    .bot-details-content {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    .close-button {
+        font-size: 1.5rem;
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+
+    .bot-details-title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .bot-details-content h3 {
+        font-size: 1.05rem;
+        margin-top: 1.5rem;
+    }
+    .bot-details-content p, .bot-details-content ul li,
+    .chat-header, .chat-buttons button, .faq-question, .faq-answer {
+        font-size: 0.9rem;
+    }
+
+    .chat-input-area textarea {
+        min-height: 60px;
+    }
+    .simulated-chat-box {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-nav li {
+        margin: 0.5rem;
+    }
+    .hero-image-placeholder {
+        width: 80%;
+    }
+    .bot-details-content {
+        width: 95%;
+        padding: 1rem;
+    }
+    .bot-details-title {
+        font-size: 1.4rem;
+    }
+    .chat-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
