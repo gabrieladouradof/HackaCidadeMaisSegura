@@ -40,6 +40,10 @@ body {
     line-height: 1.6;
 }
 
+.logo {
+  height: 50px;               
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
