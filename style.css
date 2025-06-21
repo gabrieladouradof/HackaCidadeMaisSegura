@@ -1,13 +1,30 @@
 :root {
-    --primary-color: #005A9C; /* Azul escuro */
-    --secondary-color: #00A9E0; /* Azul claro */
-    --text-color-light: #f8f9fa;
-    --text-color-dark: #343a40;
-    --background-color: #ffffff;
-    --header-bg: #ffffff;
+    --primary-color: #4175ff; /* New vibrant blue for texts and icons */
+    --secondary-color: #7bbaff; /* Lighter, complementary blue for accents */
+    --text-color-light: #ffffff; /* Pure white for high contrast */
+    --text-color-dark: #e4eaf1; /* General text color on dark backgrounds, changed from f8f9fa */
+    --background-color: #1a242d; /* Dark background from prompt */
+    --header-bg: #1a242d; /* Header background matches main background */
     --font-family: 'Poppins', sans-serif;
-    --border-color: #dee2e6;
-    --light-blue-bg: #e6f4fb; /* Used for icons and light backgrounds */
+    --border-color: #3e4e5e; /* Subtle dark grey for borders */
+    --light-blue-bg: #2b3948; /* Darker background for icon circles */
+    --card-bg-color: #1a242d; /* Background for component and funciona cards, radar feature cards, changed from 26313f */
+    --simulated-chat-box-bg: #2a3847; /* Background for chat box */
+    --faq-item-bg: #222b36; /* Background for FAQ items */
+
+    /* New colors for Zonas Criticas overlay as per prompt */
+    --zonas-criticas-text-color: #e4eaf1;
+    --zonas-criticas-title-color: #ffffff;
+    --zonas-criticas-highlight-color: #7fc3f9;
+
+    /* Dashboard specific colors */
+    --dashboard-bg: #1a242d;
+    --dashboard-card-bg: #447eb2; /* Changed to requested blue */
+    --dashboard-border-color: #3e4e5e;
+    --low-risk-color: #5cb85c; /* Green */
+    --medium-risk-color: #f0ad4e; /* Orange */
+    --high-risk-color: #d9534f; /* Red */
+    --chart-grid-color: var(--border-color); /* Changed to use border color for dark theme */
 }
 
 html {
@@ -31,7 +48,7 @@ body {
 
 .site-header {
     background-color: var(--header-bg);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Adjusted for dark theme */
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -60,7 +77,7 @@ body {
 .site-slogan {
     margin: 0;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: #a0a8b1; /* Lighter grey for contrast */
     font-weight: 300;
 }
 
@@ -157,13 +174,20 @@ body {
     transform: translateY(-2px);
 }
 
-.hero-image-placeholder {
+.hero-image {
     flex-basis: 40%;
     max-width: 400px;
-    aspect-ratio: 1 / 1;
-    background-color: var(--secondary-color);
+    aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 90, 156, 0.2);
+    box-shadow: 0 8px 25px rgba(26, 76, 105, 0.3); /* Adjusted for dark theme */
+    overflow: hidden; /* Ensure image respects border-radius */
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+    display: block;
 }
 
 .content-section {
@@ -188,7 +212,7 @@ body {
 main section {
     padding-top: 6rem; /* Adjust for sticky header and add some space */
     padding-bottom: 4rem; /* Increased bottom padding for better spacing */
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color); /* Using variable */
 }
 
 main section:first-of-type, main section:last-of-type {
@@ -205,20 +229,19 @@ main section:first-of-type {
 /* Componentes Principais - Cards */
 .componentes-cards-wrapper {
     display: flex;
-    gap: 2rem;
+    gap: 20px; /* Changed from 2rem to 20px */
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 2rem;
 }
 
 .componente-card {
-    background: #fff;
-    box-shadow: 0 4px 18px rgba(0,90,156,0.07), 0 1.5px 5px rgba(0,0,0,0.04);
+    background: var(--card-bg-color); /* Using variable, which is now #1a242d */
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2), 0 1.5px 5px rgba(0,0,0,0.1); /* Adjusted for dark theme */
     border-radius: 18px;
     padding: 2.2rem 2rem 2rem 2rem;
-    flex: 1 1 340px;
-    max-width: 400px;
-    min-width: 260px;
+    flex: 1 1 calc(50% - 10px); /* Each card occupies half width minus gap */
+    /* Removed max-width and min-width to allow them to truly take 50% */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -228,12 +251,12 @@ main section:first-of-type {
 
 .componente-card:hover {
     transform: translateY(-6px) scale(1.025);
-    box-shadow: 0 8px 30px rgba(0,90,156,0.13), 0 2px 7px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 2px 7px rgba(0,0,0,0.15); /* Adjusted for dark theme */
 }
 
 .componente-icon {
     margin-bottom: 1.3rem;
-    background: var(--light-blue-bg);
+    background: var(--light-blue-bg); /* Using variable */
     border-radius: 50%;
     width: 64px;
     height: 64px;
@@ -250,7 +273,7 @@ main section:first-of-type {
 
 .componente-title {
     color: var(--primary-color);
-    font-size: 1.22rem;
+    font-size: 1.5rem; /* Increased font size for emphasis */
     font-weight: 700;
     text-align: center;
     margin-bottom: 1rem;
@@ -263,12 +286,14 @@ main section:first-of-type {
     color: var(--text-color-dark);
     font-size: 1.07rem;
     line-height: 1.6;
+    align-self: flex-start; /* Align list to the start (left) */
 }
 
 .componente-list li {
     margin-bottom: 0.7rem;
     position: relative;
     padding-left: 1.2rem;
+    text-align: left; /* Ensure text within list item is left-aligned */
 }
 
 .componente-list li::before {
@@ -276,12 +301,21 @@ main section:first-of-type {
     display: inline-block;
     width: 7px;
     height: 7px;
-    background: var(--secondary-color);
+    background: var(--secondary-color); /* Using variable */
     border-radius: 50%;
     position: absolute;
     left: 0;
     top: 0.64em;
     transform: translateY(-45%);
+}
+
+.componente-text { /* Moved from inline style */
+    font-size: 1.07rem;
+    color: var(--text-color-dark);
+    margin-top: 1rem;
+    text-align: left; /* Changed from center to left */
+    align-self: flex-start; /* Align paragraph to the start (left) */
+    width: 100%; /* Ensure it takes full width for text alignment */
 }
 
 /* Como Funciona - Etapas */
@@ -298,8 +332,8 @@ main section:first-of-type {
 }
 
 .funciona-etapa-card {
-    background: #fff;
-    box-shadow: 0 4px 18px rgba(0,90,156,0.08), 0 1.5px 5px rgba(0,0,0,0.03);
+    background: var(--card-bg-color); /* Using variable */
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2), 0 1.5px 5px rgba(0,0,0,0.1); /* Adjusted for dark theme */
     border-radius: 16px;
     padding: 2rem 1.3rem 1.6rem 1.3rem;
     flex: 1 1 230px;
@@ -315,11 +349,11 @@ main section:first-of-type {
 
 .funciona-etapa-card:hover {
     transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 30px rgba(0,90,156,0.13), 0 2px 7px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 2px 7px rgba(0,0,0,0.15); /* Adjusted for dark theme */
 }
 
 .funciona-icone {
-    background: var(--light-blue-bg);
+    background: var(--light-blue-bg); /* Using variable */
     border-radius: 50%;
     width: 62px;
     height: 62px;
@@ -357,7 +391,7 @@ main section:first-of-type {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
     display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
@@ -367,17 +401,31 @@ main section:first-of-type {
 }
 
 .bot-details-content {
-    background: var(--background-color);
+    background: var(--background-color); /* Already uses variable */
     border-radius: 18px;
-    padding: 2.5rem 2rem;
-    max-width: 800px;
+    padding: 2rem 1.8rem; /* Reduced padding slightly for compactness */
+    max-width: 700px; /* Reduced max-width for more compact design */
     width: 95%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Adjusted for dark theme */
     animation: fadeInScale 0.3s ease-out;
     box-sizing: border-box;
+}
+
+/* Reduce spacing in bot-details-content */
+.bot-details-content h3 {
+    margin-top: 1.5rem; /* Reduced from 2rem */
+    margin-bottom: 0.6rem; /* Reduced from 0.8rem */
+}
+
+.bot-details-content p {
+    margin-bottom: 0.8rem; /* Reduced from 1rem */
+}
+
+.bot-details-content ul li {
+    margin-bottom: 0.4rem; /* Reduced from 0.5rem */
 }
 
 @keyframes fadeInScale {
@@ -399,7 +447,7 @@ main section:first-of-type {
     border: none;
     font-size: 1.8rem;
     cursor: pointer;
-    color: var(--text-color-dark);
+    color: var(--text-color-dark); /* Using variable */
     line-height: 1;
     padding: 0.5rem;
     border-radius: 50%;
@@ -407,13 +455,13 @@ main section:first-of-type {
 }
 
 .close-button:hover {
-    background-color: var(--light-blue-bg);
-    color: var(--primary-color);
+    background-color: var(--light-blue-bg); /* Using variable */
+    color: var(--primary-color); /* Using variable */
 }
 
 .bot-details-title {
     font-size: 2.2rem;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
     margin-top: 0;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -421,7 +469,7 @@ main section:first-of-type {
 }
 
 .bot-details-content h3 {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
     font-size: 1.25rem;
     margin-top: 2rem;
     margin-bottom: 0.8rem;
@@ -430,7 +478,7 @@ main section:first-of-type {
 
 .bot-details-content p {
     font-size: 1.05rem;
-    color: var(--text-color-dark);
+    color: var(--text-color-dark); /* Using variable */
     margin-bottom: 1rem;
 }
 
@@ -439,7 +487,7 @@ main section:first-of-type {
     padding: 0;
     margin: 0;
     font-size: 1.05rem;
-    color: var(--text-color-dark);
+    color: var(--text-color-dark); /* Using variable */
 }
 
 .bot-details-content ul li {
@@ -450,37 +498,38 @@ main section:first-of-type {
 
 .bot-details-content ul li::before {
     content: "•"; /* Bullet point */
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Using variable */
     font-size: 1.5rem;
     position: absolute;
     left: 0;
     top: -0.1em;
+    transform: translateY(-45%);
 }
 
 /* Simulated Chat Box */
 .simulated-chat-heading {
     text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2.5rem; /* Reduced margin */
+    margin-bottom: 1rem; /* Reduced margin */
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
 }
 
 .simulated-chat-box {
-    background-color: #f0f2f5;
+    background-color: var(--simulated-chat-box-bg); /* Using variable */
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.5rem;
+    border-radius: 12px; /* Kept current, seems modern enough */
+    padding: 1.2rem; /* Reduced padding slightly */
     margin: 0 auto;
     max-width: 450px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.15); /* Modernized shadow */
 }
 
 .chat-header {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem; /* Reduced margin */
     font-size: 1rem;
 }
 
@@ -495,66 +544,254 @@ main section:first-of-type {
     min-height: 80px;
     box-sizing: border-box;
     margin-bottom: 1rem;
+    background-color: #3e4e5e; /* Darker input background */
+    color: var(--text-color-dark);
+}
+
+.chat-input-area textarea::placeholder {
+    color: #a0a8b1; /* Lighter placeholder text */
 }
 
 .chat-buttons {
     display: flex;
     justify-content: space-around;
-    gap: 1rem;
+    gap: 0.8rem; /* Reduced gap */
 }
 
 .chat-buttons button {
     flex: 1;
-    padding: 0.8rem 1.2rem;
+    padding: 0.7rem 1rem; /* Reduced padding */
     border: none;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* Reduced font size */
 }
 
 .audio-send-button {
-    background-color: var(--secondary-color);
-    color: var(--text-color-light);
+    background-color: var(--secondary-color); /* Using variable */
+    color: var(--text-color-light); /* Using variable */
 }
 
 .audio-send-button:hover {
-    background-color: #008cc0;
+    background-color: #6299e5; /* Darker shade of new secondary for hover */
     transform: translateY(-1px);
+}
+
+.audio-send-button.recording {
+    background-color: #d9534f; /* Red for recording state */
+    animation: pulse 1s infinite alternate; /* Pulsing effect */
+}
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(1.05); opacity: 0.8; }
 }
 
 .text-send-button {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+    background-color: var(--primary-color); /* Using variable */
+    color: var(--text-color-light); /* Using variable */
 }
 
 .text-send-button:hover {
-    background-color: #004a80;
+    background-color: #355ec0; /* Darker shade of new primary for hover */
     transform: translateY(-1px);
+}
+
+/* NEW: Predefined Topics Section */
+.predefined-topics-section {
+    margin-bottom: 0.8rem; /* Space between topics and selected type display */
+}
+
+.predefined-topics-section details {
+    background-color: var(--faq-item-bg); /* Similar to FAQ item */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 0.5rem; /* Space if there are multiple sections */
+}
+
+.predefined-topics-section summary {
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 0.8rem 1rem; /* Padding for summary text */
+    cursor: pointer;
+    outline: none;
+    list-style: none; /* Hide default triangle */
+    display: flex;
+    align-items: center;
+}
+
+.predefined-topics-section summary::-webkit-details-marker {
+    display: none; /* Hide marker for Webkit browsers */
+}
+
+.predefined-topics-section summary::before {
+    content: "▶"; /* Custom triangle icon */
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+    color: var(--secondary-color);
+}
+
+.predefined-topics-section details[open] summary::before {
+    transform: rotate(90deg); /* Rotate triangle when open */
+}
+
+.predefined-topics-section ul {
+    list-style: none;
+    padding: 0.5rem 0 0.8rem 0; /* Padding for the list inside details */
+    margin: 0;
+    border-top: 1px dashed var(--border-color);
+}
+
+.predefined-topics-section li {
+    padding: 0.6rem 1rem; /* Padding for each topic item */
+    color: var(--text-color-dark);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.predefined-topics-section li:hover {
+    background-color: #3e4e5e; /* Hover background */
+    color: var(--text-color-light);
+}
+
+/* Styling for the new selected type display */
+.selected-report-type-display {
+    background-color: var(--faq-item-bg);
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem; /* Adjusted space between selected type and location input */
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.selected-report-type-display strong {
+    color: var(--secondary-color);
+}
+
+/* Styling for selected list item within details */
+.predefined-topics-section li.selected {
+    background-color: var(--primary-color); /* Highlight color */
+    color: var(--text-color-light); /* White text on highlight */
+    font-weight: 600;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 5px rgba(123, 191, 255, 0.5); /* Soft glow */
+}
+
+.predefined-topics-section li.selected::before {
+    content: "✅"; /* Checkmark for selected */
+    margin-right: 0.3em;
+    color: var(--text-color-light);
+}
+
+/* NEW: Location Input Area */
+.location-input-area {
+    margin-bottom: 0.8rem; /* Space between location input and chat textarea */
+}
+
+.location-input-area input[type="text"] {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    background-color: #3e4e5e; /* Darker input background */
+    color: var(--text-color-dark);
+}
+
+.location-input-area input[type="text"]::placeholder {
+    color: #a0a8b1; /* Lighter placeholder text */
+}
+
+/* NEW: Message Confirmation Overlay */
+.confirmation-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.confirmation-title {
+    color: #4ade80; /* Green checkmark color */
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.confirmation-text {
+    color: var(--text-color-dark);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.sent-message-display {
+    background-color: var(--faq-item-bg);
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 90%;
+    word-wrap: break-word; /* Ensure long text wraps */
+    text-align: left;
+    font-style: italic;
+    color: var(--primary-color);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.thank-you-message {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.confirmation-ok-button {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 1.5rem;
+}
+
+.confirmation-ok-button:hover {
+    background-color: #355ec0;
+    transform: translateY(-2px);
 }
 
 /* FAQ Section */
 .faq-section {
-    margin-top: 3.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px dashed var(--border-color);
+    margin-top: 2rem; /* Reduced margin */
+    padding-top: 1rem; /* Reduced padding */
+    border-top: 1px dashed var(--border-color); /* Using variable */
 }
 
 .faq-section h3 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Reduced margin */
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
 }
 
 .faq-item {
-    background-color: #fdfdfd;
-    border: 1px solid #e9ecef;
+    background-color: var(--faq-item-bg); /* Using variable */
+    border: 1px solid var(--border-color); /* Using variable */
     border-radius: 10px;
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 0.8rem 1rem; /* Reduced padding */
+    margin-bottom: 0.6rem; /* Reduced margin */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Adjusted for dark theme */
 }
 
 .faq-item:last-child {
@@ -563,20 +800,699 @@ main section:first-of-type {
 
 .faq-question {
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--primary-color); /* Using variable */
     margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
+    margin-bottom: 0.3rem; /* Reduced margin */
+    font-size: 1rem; /* Reduced font size slightly */
     line-height: 1.4;
 }
 
 .faq-answer {
-    color: var(--text-color-dark);
+    color: var(--text-color-dark); /* Using variable */
     margin-bottom: 0;
-    font-size: 0.98rem;
+    font-size: 0.95rem; /* Reduced font size slightly */
     line-height: 1.5;
 }
 
+/* New: Styles for Radar Details Overlay */
+.radar-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.radar-feature-card {
+    background: var(--card-bg-color); /* Using variable */
+    border: 1px solid var(--border-color); /* Using variable */
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adjusted for dark theme */
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.radar-feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adjusted for dark theme */
+}
+
+.radar-feature-icon {
+    background: var(--light-blue-bg); /* Using variable */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.radar-feature-icon svg {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.radar-feature-card h3 {
+    color: var(--primary-color); /* Using variable */
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+}
+
+.radar-feature-card p {
+    font-size: 0.95rem;
+    color: var(--text-color-dark); /* Using variable */
+    margin-bottom: 0;
+}
+
+/* Styles for the new Integration Details Overlay */
+.data-integration-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column on small screens */
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .data-integration-grid {
+        grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+    }
+}
+
+.relatos-populares-col,
+.dados-publicos-col {
+    background-color: var(--card-bg-color); /* Use card background for columns */
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.relatos-populares-col h3,
+.dados-publicos-col h3 {
+    color: var(--secondary-color); /* Use a distinct color for sub-headings */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.report-item,
+.public-data-item {
+    background-color: var(--faq-item-bg); /* Use FAQ item background for individual items */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.report-item:last-child,
+.public-data-item:last-child {
+    margin-bottom: 0;
+}
+
+.report-text {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.report-meta {
+    font-size: 0.85rem;
+    color: #a0a8b1; /* Lighter grey for meta info */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+
+.report-meta span {
+    white-space: nowrap;
+}
+
+.urgency-low { color: #5cb85c; } /* Green */
+.urgency-medium { color: #f0ad4e; } /* Orange */
+.urgency-high { color: #d9534f; } /* Red */
+
+.data-text {
+    color: var(--text-color-dark);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.risk-indicator {
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.risk-low { background-color: rgba(92, 184, 92, 0.2); color: #5cb85c; }
+.risk-medium { background-color: rgba(240, 173, 78, 0.2); color: #f0ad4e; }
+.risk-high { background-color: rgba(217, 83, 79, 0.2); color: #d9534f; }
+
+/* Extras Section (part of Integration Details) */
+.extras-section {
+    margin-top: 3rem;
+    text-align: center;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 2rem;
+}
+
+.extras-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.map-simulation-area {
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-simulation-area img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.extra-points ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Align text to left within list */
+}
+
+.extra-points p {
+    font-size: 1rem;
+    color: var(--text-color-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.extra-points li {
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.extra-icon {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    line-height: 1;
+    display: inline-block;
+    width: 25px; /* Fixed width for icon to align text */
+    text-align: center;
+}
+
+/* NEW: Zonas Criticas Overlay Styles */
+#zonas-criticas-overlay .bot-details-content {
+    background-color: var(--background-color);
+    color: var(--zonas-criticas-text-color); /* General text color for this overlay */
+}
+
+#zonas-criticas-overlay .zonas-criticas-title {
+    color: var(--zonas-criticas-title-color); /* Specific title color */
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+#zonas-criticas-overlay .zonas-criticas-description {
+    font-size: 1.1rem;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    color: var(--zonas-criticas-text-color);
+}
+
+/* Zonas Criticas Content Grid - Changed to a single vertical column */
+.zonas-criticas-content-grid {
+    display: flex; /* Change to flex for vertical stacking */
+    flex-direction: column; /* Stack items vertically */
+    gap: 2rem; /* Spacing between the map area and patterns area */
+    margin-top: 2rem;
+}
+
+/* Ensure map and patterns areas take full width within their parent */
+.mapa-interativo-area,
+.padroes-detectados-area {
+    width: 100%; /* Ensure they occupy full width of the flex container */
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-interativo-area h3,
+.padroes-detectados-area h3 {
+    color: var(--zonas-criticas-title-color); /* Use specific title color */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Styles for Leaflet map container */
+#mapa-risco {
+    background-color: #3e4e5e !important; /* Fallback for map background */
+}
+
+.map-info-text p {
+    font-size: 0.95rem;
+    color: var(--zonas-criticas-text-color);
+    text-align: left;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.pattern-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    background-color: var(--faq-item-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.pattern-item:last-child {
+    margin-bottom: 0;
+}
+
+.pattern-icon {
+    font-size: 1.5rem;
+    color: var(--zonas-criticas-highlight-color); /* Highlight color */
+    line-height: 1;
+    background-color: var(--light-blue-bg);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.pattern-title {
+    font-weight: 600;
+    color: var(--zonas-criticas-highlight-color); /* Highlight color */
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.pattern-desc {
+    font-size: 0.9rem;
+    color: var(--zonas-criticas-text-color); /* Text color */
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.dynamic-update-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border-color);
+    text-align: center;
+}
+
+.dynamic-update-section h3 {
+    color: var(--zonas-criticas-title-color); /* Title color */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.dynamic-update-section p {
+    font-size: 1rem;
+    color: var(--zonas-criticas-text-color); /* Text color */
+    line-height: 1.6;
+}
+
+.dynamic-update-section .highlight-text {
+    color: var(--zonas-criticas-highlight-color); /* Highlight color */
+    font-weight: 600;
+}
+
+/* Styles for Restricted Access Form */
+.access-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--faq-item-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="tel"] { /* Added for phone input */
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #3e4e5e;
+    color: var(--text-color-dark);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { /* Added for textarea placeholder */
+    color: #a0a8b1;
+}
+
+.access-form button,
+.parceria-contact-form button { /* Applied to new form button as well */
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.05rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 1rem;
+}
+
+.access-form button:hover,
+.parceria-contact-form button:hover { /* Applied to new form button as well */
+    background-color: #355ec0;
+    transform: translateY(-2px);
+}
+
+.explanation-text {
+    font-size: 0.9rem;
+    color: #a0a8b1;
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.info-message {
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.loading-message {
+    background-color: rgba(65, 117, 255, 0.2); /* Primary color with opacity */
+    color: var(--primary-color);
+}
+
+.success-message {
+    background-color: rgba(92, 184, 92, 0.2); /* Green color with opacity */
+    color: var(--low-risk-color);
+}
+
+/* NEW: Parceria com Empresas Section Styles */
+.parceria-empresas-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.parceria-empresas-subtitle {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.parceria-empresas-intro {
+    font-size: 1.1rem;
+    color: var(--text-color-dark);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Specific styles for the "Mensagem" textarea in the partnership form */
+.parceria-contact-form #message-parceria {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--dashboard-card-bg); /* Use the specified blue for the border */
+    border-radius: 8px;
+    background-color: #1e2a38; /* Dark background as requested */
+    color: var(--text-color-dark); /* Light text color */
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Increased height */
+    box-shadow: 0 0 8px rgba(68, 126, 178, 0.3); /* Subtle blue glow */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.parceria-contact-form #message-parceria:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 12px rgba(123, 186, 255, 0.5);
+}
+
+.parceria-beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.beneficio-card {
+    background: var(--card-bg-color);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.2), 0 1.5px 5px rgba(0,0,0,0.1);
+    border-radius: 18px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.18s cubic-bezier(.24,.6,.44,1.34), box-shadow 0.19s;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 2px 7px rgba(0,0,0,0.15);
+}
+
+.beneficio-icon {
+    margin-bottom: 1.2rem;
+    font-size: 2.5rem; /* Larger icon for impact */
+    line-height: 1;
+    background: var(--light-blue-bg);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color); /* Color for the emoji/icon */
+}
+
+.beneficio-title {
+    color: var(--primary-color);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.beneficio-text {
+    font-size: 0.95rem;
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.parceria-cta-block {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: var(--light-blue-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.parceria-cta-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.parceria-footer-text {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border-color);
+}
+
+.parceria-footer-text p {
+    font-size: 1.05rem;
+    color: #a0a8b1;
+    font-weight: 400;
+}
+
+/* New Parceria Contact Form specific styles (reusing existing form styles) */
+.parceria-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    background-color: var(--faq-item-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Overwrite general .section-text for overlays if needed */
+#parceria-contato-overlay .section-text {
+    font-size: 1.1rem;
+    color: var(--text-color-dark);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+/* New styles for the partnership confirmation screen */
+#parceria-confirmation-screen {
+    text-align: center;
+}
+
+.benefits-checklist {
+    background-color: var(--faq-item-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: 0 auto 2rem auto;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.benefits-checklist h3 {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.benefits-checklist ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.benefits-checklist li {
+    color: var(--text-color-dark);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: fadeInItem 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.benefits-checklist li:last-child {
+    margin-bottom: 0;
+}
+
+/* Staggered animation for list items */
+.benefits-checklist li:nth-child(1) { animation-delay: 0.1s; }
+.benefits-checklist li:nth-child(2) { animation-delay: 0.2s; }
+.benefits-checklist li:nth-child(3) { animation-delay: 0.3s; }
+.benefits-checklist li:nth-child(4) { animation-delay: 0.4s; }
+.benefits-checklist li:nth-child(5) { animation-delay: 0.5s; }
+.benefits-checklist li:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.benefit-icon {
+    font-size: 1.5rem;
+    color: var(--dashboard-card-bg); /* Use the specified blue for icons */
+    line-height: 1;
+}
+
+#parceria-confirmation-ok {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#parceria-confirmation-ok:hover {
+    background-color: #355ec0;
+    transform: translateY(-2px);
+}
+
+/* Adjustments for smaller screens */
 @media (max-width: 992px) {
     .hero-title {
         font-size: 2rem;
@@ -590,7 +1506,7 @@ main section:first-of-type {
     }
 
     .componentes-cards-wrapper {
-        gap: 1.2rem;
+        gap: 1.2rem; /* Kept for small adjustments, but 20px is primary */
     }
 
     .como-funciona-steps {
@@ -603,7 +1519,8 @@ main section:first-of-type {
     }
 
     .bot-details-content {
-        padding: 2rem 1.5rem;
+        padding: 1.8rem 1.5rem; /* Adjusted for smaller screens */
+        max-width: 600px; /* Further reduced */
     }
 
     .bot-details-title {
@@ -613,8 +1530,81 @@ main section:first-of-type {
     .bot-details-content h3 {
         font-size: 1.15rem;
     }
-    .bot-details-content p, .bot-details-content ul li {
+    .bot-details-content p, .bot-details-content ul li,
+    .chat-header, .chat-buttons button, .faq-question, .faq-answer {
+        font-size: 0.9rem;
+    }
+
+    .chat-input-area textarea {
+        min-height: 60px;
+    }
+    .simulated-chat-box {
+        padding: 1rem;
+    }
+
+    .predefined-topics-section li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .radar-feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    /* Zonas Criticas specific adjustments */
+    #zonas-criticas-overlay .zonas-criticas-title {
+        font-size: 1.8rem;
+    }
+    #zonas-criticas-overlay .zonas-criticas-description {
         font-size: 1rem;
+    }
+    .mapa-interativo-area h3, .padroes-detectados-area h3 {
+        font-size: 1.1rem;
+    }
+    .map-info-text p {
+        font-size: 0.9rem;
+    }
+
+    /* Dashboard adjustments */
+    .dashboard-tabs {
+        gap: 0.6rem;
+    }
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    .predictive-insights-grid {
+        grid-template-columns: 1fr;
+    }
+    .historical-filters {
+        grid-template-columns: 1fr;
+    }
+
+    /* Parceria com Empresas adjustments */
+    .parceria-empresas-title {
+        font-size: 2rem;
+    }
+    .parceria-empresas-subtitle {
+        font-size: 1.2rem;
+    }
+    .parceria-empresas-intro {
+        font-size: 1rem;
+    }
+    .parceria-beneficios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    .beneficio-title {
+        font-size: 1.2rem;
+    }
+    .beneficio-text {
+        font-size: 0.9rem;
+    }
+    .parceria-cta-text {
+        font-size: 1.3rem;
     }
 }
 
@@ -653,9 +1643,9 @@ main section:first-of-type {
         order: 2; /* Text appears after image */
     }
     
-    .hero-image-placeholder {
+    .hero-image {
         order: 1; /* Image appears before text */
-        width: 60%;
+        width: 60%; /* Adjust image width for responsiveness */
         flex-basis: auto;
     }
 
@@ -668,12 +1658,14 @@ main section:first-of-type {
     }
 
     .componentes-cards-wrapper {
-        flex-direction: column;
+        flex-direction: column; /* Stack vertically on small screens */
         align-items: stretch;
+        gap: 20px; /* Maintain gap */
     }
     .componente-card {
-        max-width: 100%;
-        width: 100%;
+        flex: 1 1 100%; /*! Take full width when stacked */
+        max-width: 100%; /* Ensure it doesn't exceed parent width */
+        width: 100%; /* Ensure it occupies 100% of the flex item space */
     }
 
     .como-funciona-steps {
@@ -717,6 +1709,15 @@ main section:first-of-type {
     .simulated-chat-box {
         padding: 1rem;
     }
+
+    .radar-feature-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .radar-feature-card {
+        max-width: 350px; /* Constrain width for single column */
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -727,7 +1728,7 @@ main section:first-of-type {
     .main-nav li {
         margin: 0.5rem;
     }
-    .hero-image-placeholder {
+    .hero-image {
         width: 80%;
     }
     .bot-details-content {
@@ -740,5 +1741,175 @@ main section:first-of-type {
     .chat-buttons {
         flex-direction: column;
         gap: 0.8rem;
+    }
+
+    /* Dashboard adjustments for very small screens */
+    .dashboard-container {
+        padding: 1.5rem;
+    }
+    .filter-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    .dashboard-map-section h3, .dashboard-charts-section h3 {
+        font-size: 1rem;
+    }
+    .map-legend {
+        font-size: 0.8rem;
+        gap: 0.5rem;
+    }
+    .dashboard-tabs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .tab-btn {
+        width: 100%;
+    }
+
+    /* Parceria com Empresas adjustments for very small screens */
+    .parceria-empresas-title {
+        font-size: 1.8rem;
+    }
+    .parceria-empresas-subtitle {
+        font-size: 1.1rem;
+    }
+    .parceria-cta-text {
+        font-size: 1.1rem;
+    }
+    .parceria-contact-form {
+        padding: 1rem;
+    }
+    .access-form button,
+    .parceria-contact-form button {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .relatos-populares-col h3,
+    .dados-publicos-col h3 {
+        font-size: 1.1rem;
+    }
+    .report-text, .data-text {
+        font-size: 0.95rem;
+    }
+    .report-meta {
+        font-size: 0.8rem;
+    }
+    .risk-indicator {
+        font-size: 0.85rem;
+    }
+    .extras-section h3 {
+        font-size: 1.3rem;
+    }
+    .map-simulation-area {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .extra-points p {
+        font-size: 0.95rem;
+    }
+    .extra-points li {
+        font-size: 0.9rem;
+    }
+    /* Zonas Criticas specific adjustments - no longer need max-width/auto margins as flex handles 100% */
+    .mapa-interativo-area, .padroes-detectados-area {
+        /* These rules are now redundant or counter-productive after changing to flex column for parent */
+        /* max-width: 350px; */
+        /* margin-left: auto; */
+        /* margin-right: auto; */
+    }
+    .mapa-interativo-area h3, .padroes-detectados-area h3 {
+        font-size: 1.1rem;
+    }
+    .map-info-text p, .pattern-desc {
+        font-size: 0.85rem;
+    }
+    .pattern-title {
+        font-size: 0.95rem;
+    }
+    .dynamic-update-section h3 {
+        font-size: 1.3rem;
+    }
+    .historical-filters .cta-button {
+        width: 100%;
+    }
+}
+
+/* Ensure Leaflet map tiles are dark */
+.leaflet-container {
+    background: #1a242d !important; /* Matches main site background */
+}
+.leaflet-tile-container img {
+    /* filter: brightness(0.8) contrast(1.2); Remove filter for light map tiles */
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--header-bg); /* Use same as header background */
+    color: var(--text-color-dark);
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 1.5rem; /* Reduced margin to bring credits closer */
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: var(--primary-color);
+}
+
+.footer-credits {
+    text-align: center;
+    padding-top: 1rem; /* Slightly reduced padding */
+    margin-top: 1rem; /* Slightly reduced margin */
+    color: #a0a8b1; /* Lighter grey for credits */
+    font-size: 0.85rem;
+}
+
+.footer-credits p {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-credits ul {
+        flex-direction: column;
+        gap: 0.3rem;
     }
 }

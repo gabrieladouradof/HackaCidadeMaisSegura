@@ -7,6 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS and JS for interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js for dashboard charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -23,6 +28,7 @@
                         <li><a href="#sobre">Sobre</a></li>
                         <li><a href="#componentes">Componentes</a></li>
                         <li><a href="#como-funciona">Como Funciona</a></li>
+                        <li><a href="#parceria-empresas">Empresas Parceiras</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </nav>
@@ -39,7 +45,8 @@
                     <p class="hero-subtitle">Plataforma que detecta riscos, apoia decisões e dá voz à população.</p>
                     <a href="#sobre" class="cta-button">Saiba Mais</a>
                 </div>
-                <div class="hero-image-placeholder">
+                <div class="hero-image">
+                    <img src="safe_city.png" alt="Cidade segura e monitorada">
                 </div>
             </div>
         </section>
@@ -55,26 +62,29 @@
                 <div class="componente-card" id="bot-cidadao-card">
                     <div class="componente-icon" aria-hidden="true">
                         <!-- Ícone assistente (robô) -->
-                        <svg width="48" height="48" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 48 48"><circle cx="24" cy="26" r="16" fill="#e6f4fb"/><rect x="12" y="16" width="24" height="18" rx="9" fill="#fff" stroke="#00A9E0"/><circle cx="18" cy="26" r="2" fill="#00A9E0"/><circle cx="30" cy="26" r="2" fill="#00A9E0"/><rect x="21" y="33" width="6" height="3" rx="1.3" fill="#005A9C"/><path d="M24 16V10M18 10h12" stroke="#005A9C"/><circle cx="24" cy="8" r="2" fill="#00A9E0" stroke="none"/></svg>
+                        <svg width="48" height="48" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 48 48"><circle cx="24" cy="26" r="16" fill="var(--light-blue-bg)"/><rect x="12" y="16" width="24" height="18" rx="9" fill="var(--text-color-dark)" stroke="var(--secondary-color)"/><circle cx="18" cy="26" r="2" fill="var(--secondary-color)"/><circle cx="30" cy="26" r="2" fill="var(--secondary-color)"/><rect x="21" y="33" width="6" height="3" rx="1.3" fill="var(--primary-color)"/><path d="M24 16V10M18 10h12" stroke="var(--primary-color)"/><circle cx="24" cy="8" r="2" fill="var(--secondary-color)" stroke="none"/></svg>
                     </div>
                     <h3 class="componente-title">Bot Cidadão 24h com IA Integrada</h3>
                     <ul class="componente-list">
-                        <li>Assistente virtual disponível 24h via WhatsApp, Telegram e App oficial da SSP/DF.</li>
-                        <li>Usa NLP para entender relatos da população.</li>
-                        <li>Classifica e estrutura os dados automaticamente (tipo de ocorrência, localização, urgência).</li>
-                        <li>Atende por texto e voz, com acessibilidade para pessoas com deficiência visual.</li>
+                        <li>Assistente virtual disponível 24h via WhatsApp.</li>
+                        <li>Utiliza Processamento de Linguagem Natural (NLP) para entender relatos da população, mesmo com linguagem informal.</li>
+                        <li>Classifica e estrutura os dados automaticamente (ex: tipo de ocorrência, localização e urgência).</li>
+                        <li>Suporta interações por texto e voz, com acessibilidade para pessoas com deficiência visual.</li>
                     </ul>
+                    <p class="componente-text">
+                        A interface é simples, rápida e segura, permitindo relatos anônimos de forma inclusiva.
+                    </p>
                 </div>
-                <div class="componente-card">
+                <div class="componente-card" id="radar-analitico-card">
                     <div class="componente-icon" aria-hidden="true">
                         <!-- Ícone análise/radar -->
-                        <svg width="48" height="48" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#e6f4fb"/><circle cx="24" cy="24" r="13" fill="#fff" stroke="#00A9E0"/><path d="M24 37a13 13 0 0 1 0-26v13z" fill="#b3e6fc" stroke="#00A9E0"/><path d="M24 24L40 8" stroke="#005A9C"/><circle cx="24" cy="24" r="2" fill="#00A9E0" stroke="none"/></svg>
+                        <svg width="48" height="48" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="var(--light-blue-bg)"/><circle cx="24" cy="24" r="13" fill="var(--text-color-dark)" stroke="var(--secondary-color)"/><path d="M24 37a13 13 0 0 1 0-26v13z" fill="#3a5068" stroke="var(--secondary-color)"/><path d="M24 24L40 8" stroke="var(--primary-color)"/><circle cx="24" cy="24" r="2" fill="var(--secondary-color)" stroke="none"/></svg>
                     </div>
                     <h3 class="componente-title">Módulo Analítico de IA (Radar Urbano)</h3>
                     <ul class="componente-list">
                         <li>Cruza dados oficiais com relatos da população.</li>
                         <li>Identifica zonas críticas e padrões temporais/espaciais.</li>
-                        <li>Emite alertas inteligentes para a SSP.</li>
+                        <li>Algumas seções deste módulo são exclusivas para instituições públicas e empresas privadas, acessíveis apenas mediante liberação prévia.</li>
                     </ul>
                 </div>
             </div>
@@ -86,12 +96,12 @@
                 <div class="funciona-etapa-card">
                     <div class="funciona-icone">
                         <!-- Bot (chat) ícone -->
-                        <svg width="40" height="40" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
-                          <rect x="5" y="9" width="30" height="19" rx="8" fill="#e6f4fb" stroke="#00A9E0"/>
-                          <circle cx="14" cy="18.5" r="1.7" fill="#00A9E0"/>
-                          <circle cx="20" cy="18.5" r="1.7" fill="#00A9E0"/>
-                          <circle cx="26" cy="18.5" r="1.7" fill="#00A9E0"/>
-                          <path d="M19 29l-6 5v-5" stroke="#005A9C"/>
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
+                          <rect x="5" y="9" width="30" height="19" rx="8" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/>
+                          <circle cx="14" cy="18.5" r="1.7" fill="var(--secondary-color)"/>
+                          <circle cx="20" cy="18.5" r="1.7" fill="var(--secondary-color)"/>
+                          <circle cx="26" cy="18.5" r="1.7" fill="var(--secondary-color)"/>
+                          <path d="M19 29l-6 5v-5" stroke="var(--primary-color)"/>
                         </svg>
                     </div>
                     <h3 class="funciona-etapa-titulo">Relato do cidadão via Bot 24h</h3>
@@ -100,10 +110,10 @@
                 <div class="funciona-etapa-card">
                     <div class="funciona-icone">
                         <!-- Processamento/IA (engrenagem/analítico) ícone -->
-                        <svg width="40" height="40" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
-                          <circle cx="20" cy="20" r="12" fill="#e6f4fb" stroke="#00A9E0"/>
-                          <path d="M20 12v5M25.2 14.8l-3.6 3.6M28 20h-5M25.2 25.2l-3.6-3.6M20 28v-5M14.8 25.2l3.6-3.6M12 20h5M14.8 14.8l3.6 3.6" stroke="#00A9E0"/>
-                          <circle cx="20" cy="20" r="3.2" fill="#00A9E0" stroke="none"/>
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
+                          <circle cx="20" cy="20" r="12" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/>
+                          <path d="M20 12v5M25.2 14.8l-3.6 3.6M28 20h-5M25.2 25.2l-3.6-3.6M20 28v-5M14.8 25.2l3.6-3.6M12 20h5M14.8 14.8l3.6 3.6" stroke="var(--secondary-color)"/>
+                          <circle cx="20" cy="20" r="3.2" fill="var(--secondary-color)" stroke="none"/>
                         </svg>
                     </div>
                     <h3 class="funciona-etapa-titulo">Processamento automático e análise preditiva</h3>
@@ -112,10 +122,10 @@
                 <div class="funciona-etapa-card">
                     <div class="funciona-icone">
                         <!-- Alerta/Bell ícone -->
-                        <svg width="40" height="40" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
-                          <path d="M30 27V20a10 10 0 1 0-20 0v7l-2 4h24l-2-4Z" fill="#e6f4fb" stroke="#00A9E0"/>
-                          <path d="M19 32h2a2 2 0 0 1-4 0z" fill="#00A9E0" stroke="#005A9C"/>
-                          <circle cx="32" cy="12" r="2.6" fill="#00A9E0" stroke="none"/>
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
+                          <path d="M30 27V20a10 10 0 1 0-20 0v7l-2 4h24l-2-4Z" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/>
+                          <path d="M19 32h2a2 2 0 0 1-4 0z" fill="var(--secondary-color)" stroke="var(--primary-color)"/>
+                          <circle cx="32" cy="12" r="2.6" fill="var(--secondary-color)" stroke="none"/>
                         </svg>
                     </div>
                     <h3 class="funciona-etapa-titulo">Geração de alertas inteligentes</h3>
@@ -124,14 +134,52 @@
                 <div class="funciona-etapa-card">
                     <div class="funciona-icone">
                         <!-- Mão com escudo/ação (parceiros) ícone -->
-                        <svg width="40" height="40" fill="none" stroke="#005A9C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
-                          <path d="M31 11l-7 5c-.7.5-1.3 1.4-1.3 2.2v6.5c0 1.5 1.6 2.6 3 2.3a13.7 13.7 0 0 0 9.2-7.2c.4-.8-1-2.6-2.3-3.3Z" fill="#e6f4fb" stroke="#00A9E0"/>
-                          <path d="M9 28v-6a5 5 0 0 1 5-5h9m-6 5.8V34a3 3 0 0 1-3-3v-1" stroke="#005A9C"/>
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40">
+                          <path d="M31 11l-7 5c-.7.5-1.3 1.4-1.3 2.2v6.5c0 1.5 1.6 2.6 3 2.3a13.7 13 0 0 0 9.2-7.2c.4-.8-1-2.6-2.3-3.3Z" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/>
+                          <path d="M9 28v-6a5 5 0 0 1 5-5h9m-6 5.8V34a3 3 0 0 1-3-3v-1" stroke="var(--primary-color)"/>
                         </svg>
                     </div>
                     <h3 class="funciona-etapa-titulo">Ações preventivas da SSP e parceiros</h3>
                     <p class="funciona-etapa-desc">Órgãos de segurança e parceiros atuam proativamente para prevenir ocorrências e proteger a população.</p>
                 </div>
+            </div>
+        </section>
+
+        <section id="parceria-empresas" class="content-section">
+            <h2 class="section-title parceria-empresas-title">Junte-se à transformação urbana.</h2>
+            <p class="parceria-empresas-subtitle">Empresas que cuidam da cidade fazem parte da solução.</p>
+            <p class="section-text parceria-empresas-intro">Convidamos empresas privadas, iniciativas sociais e grupos de interesse a se tornarem aliadas da segurança urbana e do bem-estar coletivo.</p>
+
+            <div class="parceria-beneficios-grid">
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">📊</div>
+                    <h3 class="beneficio-title">Relatórios Exclusivos de Segurança Pública</h3>
+                    <p class="beneficio-text">Acesso a dados preditivos sobre áreas de risco e padrões de criminalidade, adaptados ao setor de atuação da empresa.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🎖️</div>
+                    <h3 class="beneficio-title">Selo "Estabelecimento Amigo da Segurança"</h3>
+                    <p class="beneficio-text">Identifique seu negócio como um parceiro da cidade. Reforce sua imagem institucional com responsabilidade social.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🤝</div>
+                    <h3 class="beneficio-title">Oportunidade de Adoção de Áreas</h3>
+                    <p class="beneficio-text">Participe da adoção de regiões vulneráveis com apoio a melhorias, ações culturais e urbanas, e receba relatórios de impacto.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="beneficio-icon">🧠</div>
+                    <h3 class="beneficio-title">Insights para Gestão e Planejamento Local</h3>
+                    <p class="beneficio-text">Use a inteligência da plataforma para apoiar decisões logísticas, operacionais e estratégicas baseadas em dados urbanos reais.</p>
+                </div>
+            </div>
+
+            <div class="parceria-cta-block">
+                <p class="parceria-cta-text">Você representa uma empresa preocupada com segurança urbana? Entre em contato com nossa equipe.</p>
+                <button class="cta-button" id="parceria-contato-button">📩 Quero ser uma Empresa Parceira</button>
+            </div>
+
+            <div class="parceria-footer-text">
+                <p>Segurança é construída com dados, decisões e colaboração. Seja parte dessa mudança.</p>
             </div>
         </section>
 
@@ -174,15 +222,33 @@
                 <p>Ofereça uma experiência rápida e segura. Nenhum dado pessoal é obrigatório para registrar um relato.</p>
             </div>
 
-            <h3 class="simulated-chat-heading">💬 Simulação de Interação com o Bot</h3>
+            <h3 class="simulated-chat-heading">💬 Interação com o Bot 24h</h3>
             <div class="simulated-chat-box">
-                <div class="chat-header">[ Campo de conversa com o Bot Cidadão 24h ]</div>
+                <div class="predefined-topics-section">
+                    <details>
+                        <summary>💡 Ver tipos de denúncias comuns</summary>
+                        <ul id="report-topics-list">
+                            <li data-report="Iluminação pública">Iluminação pública</li>
+                            <li data-report="Barulho excessivo">Barulho excessivo</li>
+                            <li data-report="Vandalismo">Vandalismo</li>
+                            <li data-report="Veículo abandonado">Veículo abandonado</li>
+                            <li data-report="Aglomeração suspeita">Aglomeração suspeita</li>
+                            <li data-report="Outros:">Outros (descreva seu relato)</li>
+                        </ul>
+                    </details>
+                </div>
+                <div class="selected-report-type-display" style="display: none;">
+                    <strong>Tipo de denúncia:</strong> <span id="current-selected-type">Nenhum</span>
+                </div>
+                <div class="location-input-area">
+                    <input type="text" id="location-input" placeholder="Ex: Rua das Mangueiras, nº 12, próximo à escola.">
+                </div>
                 <div class="chat-input-area">
-                    <textarea placeholder="Digite ou envie sua mensagem de voz aqui:&#10;Ex: &quot;Tem um carro abandonado aqui.&quot;" rows="3"></textarea>
+                    <textarea id="chat-textarea" placeholder="Digite seu relato aqui:&#10;Ex: &quot;Tem um carro abandonado aqui.&quot;" rows="3"></textarea>
                 </div>
                 <div class="chat-buttons">
-                    <button class="audio-send-button">🎤 Enviar Áudio</button>
-                    <button class="text-send-button">📩 Enviar Texto</button>
+                    <button id="audio-send-button" class="audio-send-button">🎤 Enviar Áudio</button>
+                    <button id="text-send-button" class="text-send-button">📩 Enviar Texto</button>
                 </div>
             </div>
 
@@ -205,10 +271,6 @@
                     <p class="faq-answer">🟢 Sim! Nenhum dado pessoal é necessário.</p>
                 </div>
                 <div class="faq-item">
-                    <p class="faq-question">🔸 &quot;Esse número é oficial?&quot;</p>
-                    <p class="faq-answer">🟢 Sim! Esse é o canal oficial da SSP/DF.</p>
-                </div>
-                <div class="faq-item">
                     <p class="faq-question">🔸 &quot;Dá pra falar com alguém humano?&quot;</p>
                     <p class="faq-answer">🟢 Esse canal é automático. Para atendimento humano:
                         📞 156 (GDF) ou 📞 190 (emergências).</p>
@@ -228,6 +290,667 @@
             </div>
         </div>
     </div>
+
+    <!-- Message Confirmation Overlay -->
+    <div id="message-confirmation-overlay" class="bot-details-overlay">
+        <div class="bot-details-content confirmation-content">
+            <button class="close-button">✖</button>
+            <h2 class="confirmation-title">✅ Mensagem Enviada!</h2>
+            <p class="confirmation-text">Sua mensagem foi encaminhada com sucesso:</p>
+            <div class="sent-message-display"></div>
+            <p class="thank-you-message">Agradecemos a sua contribuição para a segurança urbana.</p>
+            <button class="confirmation-ok-button">OK</button>
+        </div>
+    </div>
+
+    <!-- Radar Details Overlay -->
+    <div id="radar-details-overlay" class="bot-details-overlay">
+        <div class="bot-details-content">
+            <button class="close-button">✖</button>
+            <h2 class="bot-details-title">🧠 Inteligência que Antecipa</h2>
+
+            <div class="radar-feature-grid">
+                <div class="radar-feature-card" id="integracao-dados-card">
+                    <div class="radar-feature-icon">
+                        <!-- Icon for Integração de Dados -->
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40"><path d="M10 20s-2-2-4-2c-2 0-4 2-4 2v6.5c0 1.5 1.6 2.6 3 2.3a13.7 13 0 0 0 9.2-7.2c.4-.8-1-2.6-2.3-3.3Z" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/>
+                    </div>
+                    <h3>🔗 Integração de Dados</h3>
+                    <p>Cruze automaticamente relatos recebidos do Bot Cidadão 24h com bases públicas oficiais (criminalidade, iluminação, evasão escolar, mobilidade urbana, etc).</p>
+                </div>
+
+                <div class="radar-feature-card" id="zonas-criticas-card">
+                    <div class="radar-feature-icon">
+                        <!-- Icon for Zonas Críticas e Padrões -->
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40"><circle cx="20" cy="20" r="12" fill="var(--light-blue-bg)"/><circle cx="20" cy="20" r="6" fill="var(--text-color-dark)" stroke="var(--secondary-color)"/><path d="M20 8v12h12M20 20L8 8" stroke="var(--primary-color)"/><circle cx="20" cy="20" r="2" fill="var(--secondary-color)" stroke="none"/></svg>
+                    </div>
+                    <h3>📍 Zonas Críticas e Padrões</h3>
+                    <p>Mapeie áreas de risco com base em localização, frequência e horário dos incidentes. Exiba padrões temporais e espaciais – como aumento de assaltos em certos bairros ou horários.</p>
+                </div>
+
+                <div class="radar-feature-card" id="paneis-mapas-dinamicos-card">
+                    <div class="radar-feature-icon">
+                        <!-- Icon for Painéis e Mapas Dinâmicos -->
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="4" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/><path d="M10 20l5 5 8-8 7 7M10 28h20" stroke="var(--primary-color)"/><circle cx="12" cy="14" r="1.5" fill="var(--secondary-color)" stroke="none"/></svg>
+                    </div>
+                    <h3>📊 Painéis e Mapas Dinâmicos</h3>
+                    <p>Apresente os dados em mapas de calor interativos e dashboards simplificados para uso por gestores públicos.</p>
+                </div>
+
+                <div class="radar-feature-card" id="tomada-decisao-card">
+                    <div class="radar-feature-icon">
+                        <!-- Icon for Tomada de Decisão Baseada em Dados -->
+                        <svg width="40" height="40" fill="none" stroke="var(--primary-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 40 40"><circle cx="20" cy="15" r="7" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/><path d="M20 22v10a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V20a4 4 0 0 0-4-4h-4a4 4 0 0 0-4 4zm-4-8v10a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V20a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4z" fill="var(--light-blue-bg)" stroke="var(--secondary-color)"/></svg>
+                    </div>
+                    <h3>🎯 Tomada de Decisão Baseada em Dados</h3>
+                    <p>Apoie o planejamento estratégico e tático com informações atualizadas, possibilitando ações rápidas e eficientes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Integration Details Overlay -->
+    <div id="integracao-details-overlay" class="bot-details-overlay">
+        <div class="bot-details-content">
+            <button class="close-button">✖</button>
+            <h2 class="bot-details-title">🧩 Integração Inteligente de Dados</h2>
+            <p class="section-text" style="font-size:1.1rem; margin-top:-1rem; margin-bottom: 2rem;">
+                Simule o cruzamento entre os relatos enviados pelo Bot Cidadão 24h com bases públicas oficiais.
+            </p>
+        
+            <div class="data-integration-grid">
+                <div class="relatos-populares-col">
+                    <h3>👉 Relatos Populares (Simulados)</h3>
+                    <div class="report-item">
+                        <p class="report-text">"Rua escura na QNL 10"</p>
+                        <div class="report-meta">
+                            <span>📍 QNL 10, Taguatinga</span>
+                            <span>🕒 15/05 22:30</span>
+                            <span>Tipo: Iluminação Pública</span>
+                            <span class="urgency-low">Urgência: Baixa</span>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <p class="report-text">"Assalto perto da escola X"</p>
+                        <div class="report-meta">
+                            <span>📍 Escola X, Ceilândia</span>
+                            <span>🕒 14/05 19:45</span>
+                            <span>Tipo: Criminalidade</span>
+                            <span class="urgency-high">Urgência: Alta</span>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <p class="report-text">"Carro abandonado na Samambaia"</p>
+                        <div class="report-meta">
+                            <span>📍 QD 302, Samambaia</span>
+                            <span>🕒 13/05 10:15</span>
+                            <span>Tipo: Ocorrência Urbana</span>
+                            <span class="urgency-medium">Urgência: Média</span>
+                        </div>
+                    </div>
+                    <div class="report-item">
+                        <p class="report-text">"Moradores usando drogas perto do terminal Y"</p>
+                        <div class="report-meta">
+                            <span>📍 Terminal Y, Sobradinho</span>
+                            <span>🕒 12/05 01:00</span>
+                            <span>Tipo: Criminalidade</span>
+                            <span class="urgency-high">Urgência: Alta</span>
+                        </div>
+                    </div>
+                     <div class="report-item">
+                        <p class="report-text">"Muitos buracos na via principal de Águas Claras"</p>
+                        <div class="report-meta">
+                            <span>📍 Av. Castanheiras, Águas Claras</span>
+                            <span>🕒 11/05 14:00</span>
+                            <span>Tipo: Mobilidade Urbana</span>
+                            <span class="urgency-medium">Urgência: Média</span>
+                        </div>
+                    </div>
+                     <div class="report-item">
+                        <p class="report-text">"Esgoto a céu aberto na quadra Z"</p>
+                        <div class="report-meta">
+                            <span>📍 Quadra Z, Estrutural</span>
+                            <span>🕒 10/05 09:30</span>
+                            <span>Tipo: Saúde Pública</span>
+                            <span class="urgency-high">Urgência: Alta</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="dados-publicos-col">
+                    <h3>🔗 Dados Públicos Cruzados</h3>
+                    <div class="public-data-item">
+                        <p class="data-text">"3 postes apagados relatados pela CEB" + "2 assaltos notificados nas últimas 48h"</p>
+                        <span class="risk-indicator risk-medium">Risco: Médio</span>
+                    </div>
+                    <div class="public-data-item">
+                        <p class="data-text">"Alta evasão escolar no CEP 72000-xxx" + "Falta de ronda noturna no mapa da PMDF"</p>
+                        <span class="risk-indicator risk-high">Risco: Alto</span>
+                    </div>
+                    <div class="public-data-item">
+                        <p class="data-text">"Histórico de abandono de veículos na área" + "Nenhum registro de remoção recente"</p>
+                        <span class="risk-indicator risk-low">Risco: Baixo</span>
+                    </div>
+                    <div class="public-data-item">
+                        <p class="data-text">"Aumento de ocorrências de tráfico em Sobradinho (últimos 3 meses)"</p>
+                        <span class="risk-indicator risk-high">Risco: Alto</span>
+                    </div>
+                    <div class="public-data-item">
+                        <p class="data-text">"50% de aumento em reclamações de buracos (último mês)" + "Zero manutenção prevista"</p>
+                        <span class="risk-indicator risk-high">Risco: Alto</span>
+                    </div>
+                    <div class="public-data-item">
+                        <p class="data-text">"Área com alta vulnerabilidade social" + "Casos de doenças infecciosas relatados"</p>
+                        <span class="risk-indicator risk-high">Risco: Alto</span>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="extras-section">
+                <h3>📊 Extras: Análise Preditiva</h3>
+                <div class="map-simulation-area">
+                    <img src="simulated_heatmap.png" alt="Simulação de Mapa de Calor" style="max-width: 100%; height: auto; border-radius: 8px;">
+                    <div class="extra-points">
+                        <p>A integração de dados ajuda a:</p>
+                        <ul>
+                            <li><span class="extra-icon">📍</span> Identificar zonas críticas em tempo real.</li>
+                            <li><span class="extra-icon">🚨</span> Priorizar recursos da segurança pública de forma eficiente.</li>
+                            <li><span class="extra-icon">🛡️</span> Atuar de forma proativa na prevenção de incidentes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zonas Criticas Details Overlay -->
+    <div id="zonas-criticas-overlay" class="bot-details-overlay">
+        <div class="bot-details-content">
+            <button class="close-button">✖</button>
+            <h2 class="zonas-criticas-title">📍 Monitoramento Inteligente de Zonas Críticas</h2>
+            <p class="zonas-criticas-description">
+                Com base na análise dos relatos e nos dados públicos integrados, o sistema identifica zonas críticas de risco, detectando padrões de horário, localização geográfica e recorrência de incidentes.
+            </p>
+
+            <div class="zonas-criticas-content-grid">
+                <div class="mapa-interativo-area">
+                    <h3>🗺️ Mapa Interativo de Risco</h3>
+                    <div class="map-container">
+                        <div id="mapa-risco" style="height: 500px; width: 100%; border-radius: 12px; margin-top: 20px;"></div>
+                        <div class="map-info-text">
+                            <p>Utilize o zoom e arraste o mapa para explorar. Clique ou passe o mouse sobre os marcadores e círculos para mais detalhes sobre as zonas de risco simuladas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="padroes-detectados-area">
+                    <h3>📊 Padrões Detectados Automaticamente</h3>
+                    <div class="pattern-item">
+                        <div class="pattern-icon">⏰</div>
+                        <div>
+                            <p class="pattern-title">Horário Crítico em Taguatinga</p>
+                            <p class="pattern-desc">Aumento de relatos de roubo e furto entre 19h e 21h nos dias de semana, concentrado próximo a pontos de ônibus e comércios.</p>
+                        </div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-icon">🚫</div>
+                        <div>
+                            <p class="pattern-title">Vulnerabilidade Escolar no Riacho Fundo</p>
+                            <p class="pattern-desc">Incidentes recorrentes (brigas, pequenos furtos, tráfico) próximos a escolas durante os horários de entrada e saída (12h-14h e 17h-18h).</p>
+                        </div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-icon">🌙</div>
+                        <div>
+                            <p class="pattern-title">Falta de Iluminação em Ceilândia Norte</p>
+                            <p class="pattern-desc">Ocorrências de violência e vandalismo aumentam significativamente após as 20h em áreas com iluminação pública precária ou ausente.</p>
+                        </div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-icon">📉</div>
+                        <div>
+                            <p class="pattern-title">Redução de Patrulhamento no Gama</p>
+                            <p class="pattern-desc">Crescimento de denúncias de arrombamentos e carros abandonados nas madrugadas, coincidindo com a baixa presença de viaturas na região.</p>
+                        </div>
+                    </div>
+                     <div class="pattern-item">
+                        <div class="pattern-icon">📈</div>
+                        <div>
+                            <p class="pattern-title">Ponto de Tráfico na Asa Sul</p>
+                            <p class="pattern-desc">Relatos frequentes de movimentação suspeita e tráfico de drogas em praças específicas da Asa Sul, especialmente aos finais de semana.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dynamic-update-section">
+                <h3>🔁 Atualização Dinâmica e Inteligência Preditiva</h3>
+                <p>Os dados são atualizados em tempo real, integrando novos relatos da população com as bases públicas. Nossa IA ajusta o mapeamento de riscos e as prioridades automaticamente, permitindo que a SSP/DF atue de forma proativa e eficiente, prevendo tendências e antecipando crises.</p>
+                <p class="highlight-text" style="margin-top: 1rem;">Tecnologia que protege, inteligência que previne!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restricted Access Overlay (for Painéis e Mapas Dinâmicos) -->
+    <div id="restricted-access-overlay" class="bot-details-overlay">
+        <div class="bot-details-content">
+            <button class="close-button">✖</button>
+            <h2 class="bot-details-title">🔒 Acesso Restrito: Painéis e Mapas Dinâmicos</h2>
+            <p class="section-text" style="font-size:1.1rem; margin-top:-1rem; margin-bottom: 2rem;">
+                Preencha os dados abaixo para solicitar acesso ao dashboard.
+            </p>
+
+            <form class="access-form">
+                <div class="form-group">
+                    <label for="company-name">Nome da empresa:</label>
+                    <input type="text" id="company-name" name="company-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" required pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}" placeholder="XX.XXX.XXX/XXXX-XX">
+                </div>
+                <div class="form-group">
+                    <label for="corporate-email">E-mail corporativo:</label>
+                    <input type="email" id="corporate-email" name="corporate-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" id="register-access-button">Registrar e Solicitar Acesso</button>
+            </form>
+
+            <p class="explanation-text">
+                ⚠️ Esta área é restrita a gestores públicos e empresas autorizadas. O acesso às informações é controlado para prevenir o uso indevido. Dados sensíveis, como zonas de risco e padrões de vulnerabilidade, podem ser utilizados indevidamente por pessoas mal-intencionadas. O sistema simula um controle de acesso para reforçar a segurança dos dados.
+            </p>
+
+            <div id="loading-message" class="info-message loading-message" style="display: none;">Carregando dados...</div>
+            <div id="success-message" class="info-message success-message" style="display: none;">✅ Acesso concedido com sucesso para: Secretaria de Segurança Pública do DF.</div>
+        </div>
+    </div>
+
+    <!-- Dashboard Overlay (for Painéis e Mapas Dinâmicos content) -->
+    <div id="dashboard-overlay" class="bot-details-overlay">
+        <div class="bot-details-content dashboard-container">
+            <button class="close-button">✖</button>
+            <h2 class="bot-details-title">📊 Dashboard de Monitoramento Urbano</h2>
+            <p class="section-text dashboard-intro-text">
+                Visão completa para decisões estratégicas em segurança pública.
+            </p>
+
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="summary">Resumo Geral</button>
+                <button class="tab-btn" data-tab="heatmap">Mapa de Risco</button>
+                <button class="tab-btn" data-tab="predictive">Análise Preditiva</button>
+                <button class="tab-btn" data-tab="flow">Fluxo Populacional</button>
+                <button class="tab-btn" data-tab="reports">Relatórios Customizados</button>
+                <button class="tab-btn" data-tab="historical">Dados Históricos</button>
+            </div>
+
+            <div id="dashboard-summary" class="tab-content active">
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Total de Denúncias Cruzadas</h3>
+                        <p class="summary-value">12.540</p>
+                        <span class="summary-trend up">▲ 15% esta semana</span>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Nível Médio de Risco</h3>
+                        <p class="summary-value risk-medium-text">Médio</p>
+                        <span class="summary-trend stable">▬ Estável</span>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Alertas Preditivos</h3>
+                        <p class="summary-value">5 Novos</p>
+                        <span class="summary-trend high">🚨 Zonas de Atenção</span>
+                    </div>
+                </div>
+                <div class="dashboard-charts-section">
+                    <div class="chart-card">
+                        <h3>Número de Ocorrências por Região</h3>
+                        <canvas id="occurrencesChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Tipos de Incidentes Mais Relatados</h3>
+                        <canvas id="incidentTypesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dashboard-heatmap" class="tab-content">
+                <div class="dashboard-filters">
+                    <h3>Filtros:</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">Últimos 7 dias</button>
+                        <button class="filter-btn">Últimos 30 dias</button>
+                        <button class="filter-btn">Últimos 6 meses</button>
+                    </div>
+                    <div class="filter-group">
+                        <label for="occurrence-type-filter">Tipo de Ocorrência:</label>
+                        <select id="occurrence-type-filter">
+                            <option value="all">Todos</option>
+                            <option value="crime">Criminalidade</option>
+                            <option value="vandalism">Vandalismo</option>
+                            <option value="lighting">Iluminação Pública</option>
+                            <option value="abandoned_vehicle">Veículo Abandonado</option>
+                            <option value="mobility">Mobilidade Urbana</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="region-filter">Região Administrativa:</label>
+                        <select id="region-filter">
+                            <option value="all">Todas</option>
+                            <option value="ceilandia">Ceilândia</option>
+                            <option value="taguatinga">Taguatinga</option>
+                            <option value="gama">Gama</option>
+                            <option value="plano_piloto">Plano Piloto</option>
+                            <option value="samambaia">Samambaia</option>
+                            <option value="guara">Guará</option>
+                            <option value="sobradinho">Sobradinho</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dashboard-map-section">
+                    <h3>🗺️ Mapa de Calor de Risco</h3>
+                    <div id="dashboard-map" style="height: 450px; width: 100%; border-radius: 12px;"></div>
+                    <div class="map-info-text">
+                        <p>Clique ou passe o mouse sobre as áreas para ver detalhes dos incidentes simulados.</p>
+                    </div>
+                    <div class="map-legend">
+                        <span>Legenda:</span>
+                        <span class="legend-item low-risk">Baixo Risco</span>
+                        <span class="legend-item medium-risk">Médio Risco</span>
+                        <span class="legend-item high-risk">Alto Risco</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dashboard-predictive" class="tab-content">
+                <h3>📈 Análise Preditiva e Sugestões</h3>
+                <p class="section-text">
+                    Nossa inteligência artificial identifica padrões emergentes e prevê riscos futuros, oferecendo sugestões estratégicas para a prevenção.
+                </p>
+                <div class="predictive-insights-grid">
+                    <div class="insight-card">
+                        <span class="insight-icon">🚨</span>
+                        <h4>Previsão de Aumento de Furtos</h4>
+                        <p>Esperado aumento de 10% em furtos a veículos na região de Taguatinga nos próximos 15 dias, especialmente durante o período noturno (22h-04h).</p>
+                        <p class="suggestion-text"><strong>Sugestão:</strong> Redirecionar patrulhamento motorizado para as áreas de maior incidência e aumentar a frequência de rondas noturnas.</p>
+                    </div>
+                    <div class="insight-card">
+                        <span class="insight-icon">👥</span>
+                        <h4>Vulnerabilidade em Áreas Escolares</h4>
+                        <p>Padrões indicam aumento de pequenos delitos e uso de drogas próximo a escolas do Riacho Fundo I e II nos horários de saída de alunos.</p>
+                        <p class="suggestion-text"><strong>Sugestão:</strong> Implementar programa "Ronda Escolar" com presença policial e ações sociais em parceria com a comunidade e conselhos tutelares.</p>
+                    </div>
+                    <div class="insight-card">
+                        <span class="insight-icon">💡</span>
+                        <h4>Risco de Vandalismo em Áreas Escuras</h4>
+                        <p>Áreas com falhas na iluminação pública, como Ceilândia Norte e Samambaia, apresentam maior probabilidade de atos de vandalismo e pichações.</p>
+                        <p class="suggestion-text"><strong>Sugestão:</strong> Coordenar com a CEB para reparo imediato da iluminação e promover mutirões de limpeza e arte urbana.</p>
+                    </div>
+                </div>
+                <div class="predictive-report-action">
+                    <button class="cta-button" id="generate-predictive-report">Gerar Relatório Preditivo Completo (PDF)</button>
+                </div>
+            </div>
+
+            <div id="dashboard-flow" class="tab-content">
+                <h3>🚶‍♂️ Fluxo e Movimento Populacional</h3>
+                <p class="section-text">
+                    Análise do movimento de pessoas em locais e horários críticos, utilizando dados anonimizados para identificar tendências.
+                </p>
+                <div class="flow-chart-container">
+                    <canvas id="populationFlowChart"></canvas>
+                </div>
+                <div class="map-simulation-area">
+                    <img src="simulated_heatmap.png" alt="Simulação de Fluxo Populacional em Mapa" style="max-width: 100%; height: auto; border-radius: 8px;">
+                    <div class="extra-points">
+                        <p>Análise de Fluxo Auxilia na:</p>
+                        <ul>
+                            <li><span class="extra-icon">⏱️</span> Identificação de horários de pico e baixa movimentação.</li>
+                            <li><span class="extra-icon">🎯</span> Posicionamento estratégico de efetivo policial.</li>
+                            <li><span class="extra-icon">🚧</span> Planejamento de interdições ou eventos de segurança.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flow-comparison-filters">
+                    <label for="flow-period-compare">Comparar com Período Anterior:</label>
+                    <select id="flow-period-compare">
+                        <option value="none">Nenhum</option>
+                        <option value="last-week">Semana Anterior</option>
+                        <option value="last-month">Mês Anterior</option>
+                        <option value="last-year">Ano Anterior</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="dashboard-reports" class="tab-content">
+                <h3>📄 Relatórios Customizados para Parcerias</h3>
+                <p class="section-text">
+                    Módulo para geração de relatórios de impacto para instituições privadas que apoiam a segurança urbana através de programas como "Estabelecimento Amigo da Segurança".
+                </p>
+                <div class="report-form-section">
+                    <div class="form-group">
+                        <label for="partner-name">Nome da Instituição Parceira:</label>
+                        <input type="text" id="partner-name" placeholder="Ex: Mercado Feliz Ltda.">
+                    </div>
+                    <div class="form-group">
+                        <label for="program-status">Status do Programa:</label>
+                        <select id="program-status">
+                            <option value="active">Ativo</option>
+                            <option value="pending">Pendente</option>
+                            <option value="concluded">Concluído</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-period">Período do Relatório:</label>
+                        <input type="month" id="report-period" value="2024-05">
+                    </div>
+                    <button class="cta-button" id="generate-private-report">Gerar Relatório (PDF)</button>
+                    <button class="cta-button" id="download-private-report-excel" style="background-color: var(--secondary-color);">Baixar Excel</button>
+                </div>
+                <div id="report-preview-message" class="info-message success-message" style="display: none; margin-top: 1.5rem;">
+                    Relatório gerado com sucesso para Mercado Feliz Ltda. - Maio/2024!
+                </div>
+            </div>
+
+            <div id="dashboard-historical" class="tab-content">
+                <h3>📜 Dados Históricos Detalhados (SSP/DF)</h3>
+                <p class="section-text">
+                    Acesse séries temporais de indicadores de criminalidade e variáveis relevantes desde 2014.
+                </p>
+                <div class="historical-filters">
+                    <div class="filter-group">
+                        <label for="hist-region">Região Administrativa:</label>
+                        <select id="hist-region">
+                            <option value="all">Todas</option>
+                            <option value="plano-piloto">Plano Piloto</option>
+                            <option value="ceilandia">Ceilândia</option>
+                            <option value="taguatinga">Taguatinga</option>
+                            <option value="gama">Gama</option>
+                            <option value="samambaia">Samambaia</option>
+                            <option value="sobradinho">Sobradinho</option>
+                            <option value="guara">Guará</option>
+                            <option value="aguas_claras">Águas Claras</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="hist-crime-type">Tipo de Crime:</label>
+                        <select id="hist-crime-type">
+                            <option value="all">Todos</option>
+                            <option value="homicide">Homicídio</option>
+                            <option value="robbery">Roubo</option>
+                            <option value="theft">Furto</option>
+                            <option value="vandalism">Vandalismo</option>
+                            <option value="drug_traffic">Tráfico de Drogas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="hist-risp">RISP (Região Integrada de Segurança Pública):</label>
+                        <select id="hist-risp">
+                            <option value="all">Todas</option>
+                            <option value="risp1">RISP 1 (Plano Piloto, Cruzeiro, Sudoeste)</option>
+                            <option value="risp2">RISP 2 (Taguatinga, Ceilândia)</option>
+                            <option value="risp3">RISP 3 (Gama, Santa Maria, Recanto das Emas)</option>
+                            <option value="risp4">RISP 4 (Sobradinho, Planaltina, Paranoá)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="hist-period-start">Período Início:</label>
+                        <input type="month" id="hist-period-start" value="2014-01">
+                    </div>
+                    <div class="filter-group">
+                        <label for="hist-period-end">Período Fim:</label>
+                        <input type="month" id="hist-period-end" value="2024-05">
+                    </div>
+                    <button class="cta-button" id="apply-historical-filters">Aplicar Filtros</button>
+                </div>
+                <div class="historical-charts">
+                    <div class="chart-card">
+                        <h3>Tendência de Criminalidade</h3>
+                        <canvas id="historicalCrimeChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Incidentes por Tipo (Histórico)</h3>
+                        <canvas id="historicalIncidentTypeChart"></canvas>
+                    </div>
+                </div>
+                <div class="historical-table-section">
+                    <h3>Tabela de Dados Resumidos</h3>
+                    <div class="data-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mês/Ano</th>
+                                    <th>Região</th>
+                                    <th>Tipo de Crime</th>
+                                    <th>Ocorrências</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Mai/2024</td><td>Ceilândia</td><td>Roubo</td><td>250</td></tr>
+                                <tr><td>Mai/2024</td><td>Taguatinga</td><td>Furto</td><td>180</td></tr>
+                                <tr><td>Abr/2024</td><td>Gama</td><td>Homicídio</td><td>5</td></tr>
+                                <tr><td>Abr/2024</td><td>Plano Piloto</td><td>Vandalismo</td><td>30</td></tr>
+                                <tr><td>Mar/2024</td><td>Samambaia</td><td>Tráfico de Drogas</td><td>15</td></tr>
+                                <tr><td>Fev/2024</td><td>Guará</td><td>Roubo</td><td>45</td></tr>
+                                <tr><td>Jan/2024</td><td>Sobradinho</td><td>Furto</td><td>20</td></tr>
+                                <tr><td>Dez/2023</td><td>Águas Claras</td><td>Vandalismo</td><td>12</td></tr>
+                                <tr><td>Nov/2023</td><td>Ceilândia</td><td>Roubo</td><td>230</td></tr>
+                                <tr><td>Out/2023</td><td>Taguatinga</td><td>Furto</td><td>160</td></tr>
+                                <tr><td>Set/2023</td><td>Gama</td><td>Homicídio</td><td>3</td></tr>
+                                <!-- More simulated data for scrollability -->
+                                <tr><td>Ago/2023</td><td>Plano Piloto</td><td>Vandalismo</td><td>28</td></tr>
+                                <tr><td>Jul/2023</td><td>Samambaia</td><td>Tráfico de Drogas</td><td>14</td></tr>
+                                <tr><td>Jun/2023</td><td>Guará</td><td>Roubo</td><td>40</td></tr>
+                                <tr><td>Mai/2023</td><td>Sobradinho</td><td>Furto</td><td>18</td></tr>
+                                <tr><td>Abr/2023</td><td>Águas Claras</td><td>Vandalismo</td><td>10</td></tr>
+                                <tr><td>Mar/2023</td><td>Ceilândia</td><td>Roubo</td><td>210</td></tr>
+                                <tr><td>Fev/2023</td><td>Taguatinga</td><td>Furto</td><td>150</td></tr>
+                                <tr><td>Jan/2023</td><td>Gama</td><td>Homicídio</td><td>2</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Parceria Contato Overlay -->
+    <div id="parceria-contato-overlay" class="bot-details-overlay">
+        <div class="bot-details-content">
+            <button class="close-button">✖</button>
+            
+            <div id="parceria-form-wrapper">
+                <h2 class="bot-details-title">🤝 Contato para Empresas Parceiras</h2>
+                <p class="section-text" style="font-size:1.1rem; margin-top:-1rem; margin-bottom: 2rem;">
+                    Preencha o formulário e nossa equipe entrará em contato em breve.
+                </p>
+
+                <form class="parceria-contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="company-name-parceria">Nome da empresa:</label>
+                        <input type="text" id="company-name-parceria" name="company-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="responsible-name-parceria">Nome do responsável:</label>
+                        <input type="text" id="responsible-name-parceria" name="responsible-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-parceria">E-mail:</label>
+                        <input type="email" id="email-parceria" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-parceria">Telefone:</label>
+                        <input type="tel" id="phone-parceria" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-parceria">Mensagem:</label>
+                        <textarea id="message-parceria" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-parceria-form">Enviar Mensagem</button>
+                </form>
+            </div>
+            
+            <div id="parceria-confirmation-screen" style="display: none;">
+                <h2 class="confirmation-title">✅ Sua solicitação foi enviada com sucesso!</h2>
+                <p class="confirmation-text" style="max-width: 500px; margin: 0 auto 2rem auto;">Em breve, nossa equipe entrará em contato com você para concluir a integração da sua empresa à plataforma.</p>
+                <div class="benefits-checklist">
+                    <h3>Sua parceria inclui:</h3>
+                    <ul>
+                        <li><span class="benefit-icon">🧠</span> Acesso ao Radar Urbano com IA Analítica</li>
+                        <li><span class="benefit-icon">📊</span> Relatórios preditivos de segurança pública</li>
+                        <li><span class="benefit-icon">📍</span> Zonas críticas e alertas em tempo real</li>
+                        <li><span class="benefit-icon">🎖️</span> Selo Estabelecimento Amigo da Segurança</li>
+                        <li><span class="benefit-icon">🤝</span> Adoção de áreas vulneráveis com impacto social</li>
+                        <li><span class="benefit-icon">💼</span> Relatórios personalizados com dados locais</li>
+                    </ul>
+                </div>
+                 <button class="confirmation-ok-button" id="parceria-confirmation-ok">OK</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Iniciativa</h3>
+                    <p>Bot Cidadão 24h – Segurança com Inteligência Artificial</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato Institucional</h3>
+                    <ul>
+                        <li><a href="mailto:atendimento@botcidadao.df.gov.br">📧 E-mail: atendimento@botcidadao.df.gov.br</a></li>
+                        <li>📞 Suporte Técnico: (61) 3222-4455</li>
+                        <li><a href="https://www.ssp.df.gov.br/botcidadao" target="_blank">🌐 Site oficial: www.ssp.df.gov.br/botcidadao</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="https://www.instagram.com/botcidadao.df" target="_blank">🔗 Instagram: @botcidadao.df</a></li>
+                        <li><a href="https://t.me/botcidadao24h" target="_blank">🔗 Telegram: t.me/botcidadao24h</a></li>
+                        <li><a href="https://wa.me/5561900000000" target="_blank">🔗 WhatsApp: (61) 90000-0000</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Equipe Técnica</h3>
+                    <ul>
+                        <li>Negócios: Deborah Loiola</li>
+                        <li>Desenvolvedor UX/UI: Rayllandr Felix</li>
+                        <li>DEV: Tiago Alves</li>
+                        <li>DEV: Gabriela Dourado</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-credits">
+                <p>Desenvolvido por Equipe WebSim, em parceria com a Secretaria de Segurança Pública do DF</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
