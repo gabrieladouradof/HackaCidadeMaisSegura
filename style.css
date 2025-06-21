@@ -50,6 +50,9 @@ body {
     height: auto;
   }
 
+#paneis-mapas-dinamicos-card {
+    width: 580;
+}
 
 #historicalCrimeChart {
   max-width: 100%;
