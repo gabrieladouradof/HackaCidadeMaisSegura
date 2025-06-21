@@ -2,6 +2,8 @@
 
 **DataPólis** é uma plataforma online de segurança pública que utiliza inteligência de dados para cruzar informações fornecidas por cidadãos com dados oficiais das forças policiais. A solução visa antecipar padrões de risco urbano e sugerir ações proativas para a redução da criminalidade e promoção da segurança.
 
+🔗 **Acesse a plataforma aqui:** [https://inquisitive-taffy-283f4b.netlify.app/](https://inquisitive-taffy-283f4b.netlify.app/)
+
 ## 🚨 Problema
 
 Cidades enfrentam altos índices de criminalidade em áreas com infraestrutura precária. Dados relevantes estão dispersos e pouco integrados entre a população, prefeituras e forças de segurança. Faltam ferramentas inteligentes que promovam ações proativas, e não apenas reativas.
