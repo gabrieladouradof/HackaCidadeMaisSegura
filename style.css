@@ -44,6 +44,20 @@ body {
   height: 50px;               
 }
 
+.graficos {
+    max-height: 500;
+    width: 100%;
+    height: auto;
+  }
+
+
+#historicalCrimeChart {
+  max-width: 100%;
+  max-height: 500px;
+  width: 100%;
+  height: auto;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
